@@ -114,28 +114,24 @@
 .hunt.hunt-left { left: 14px; right: auto; top: 66px; bottom: auto; width: 320px; max-height: calc(100vh - 270px); }
 
 /* ---------- "do this next" guide ---------- */
-.spx-glow { animation: spxGlow 1.1s ease-in-out infinite alternate !important; position: relative; z-index: 1; }
+.spx-glow { animation: spxGlow 2.2s ease-in-out infinite alternate !important; }
 @keyframes spxGlow {
-  from { box-shadow: 0 0 0 3px var(--spx-gold), 0 0 10px 3px rgba(226,194,122,.55); }
-  to   { box-shadow: 0 0 0 5px var(--spx-gold), 0 0 22px 9px rgba(226,194,122,.85); }
+  from { box-shadow: 0 0 0 4px var(--spx-gold), 0 0 12px 4px rgba(226,194,122,.45); }
+  to   { box-shadow: 0 0 0 4px var(--spx-gold), 0 0 18px 7px rgba(226,194,122,.8); }
 }
 .spx-pointer {
   position: fixed; z-index: 1500; pointer-events: none; display: flex; align-items: center; gap: 6px;
   background: var(--spx-gold); color: var(--spx-navy); border: 2px solid var(--spx-navy); border-radius: 999px;
   padding: 6px 14px; font: 800 16px var(--spx-body); white-space: nowrap; box-shadow: 0 6px 16px rgba(12,35,64,.35);
-  transform: var(--tr); animation: spxBobX .8s ease-in-out infinite alternate;
+  transform: var(--tr);
 }
 .spx-pointer[hidden] { display: none; }
 .spx-pointer b { font-size: 20px; line-height: 1; }
-.spx-pointer.at-left { animation-name: spxBobXr; }
-.spx-pointer.at-top, .spx-pointer.at-bottom { animation-name: spxBobY; }
-@keyframes spxBobX { from { transform: var(--tr) translateX(0); } to { transform: var(--tr) translateX(8px); } }
-@keyframes spxBobXr { from { transform: var(--tr) translateX(0); } to { transform: var(--tr) translateX(-8px); } }
-@keyframes spxBobY { from { transform: var(--tr) translateY(0); } to { transform: var(--tr) translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .spx-glow, .hunt-item.need, .hunt.collapsed.waiting .hunt-head { animation: none !important; box-shadow: 0 0 0 4px var(--spx-gold) !important; } }
 
-.hunt-item.need { border-color: var(--spx-gold); background: #fffaf0; animation: spxGlow 1.1s ease-in-out infinite alternate; }
+.hunt-item.need { border-color: var(--spx-gold); background: #fffaf0; animation: spxGlow 2.2s ease-in-out infinite alternate; }
 .hunt-badge { align-self: flex-start; background: var(--spx-gold); color: var(--spx-navy); font-weight: 800; font-size: 13px; border-radius: 999px; padding: 2px 10px; }
-.hunt.collapsed.waiting .hunt-head { animation: spxGlow 1.1s ease-in-out infinite alternate; }
+.hunt.collapsed.waiting .hunt-head { animation: spxGlow 2.2s ease-in-out infinite alternate; }
 .hunt-body { padding: 12px 14px 14px; }
 
 /* reading and "your turn" blocks used inside the experiences */
@@ -144,3 +140,8 @@
 .spx-read-lbl { color: var(--spx-navy-3); }
 .spx-turn { background: #fff4d6; border: 2px solid var(--spx-gold); border-radius: 8px; padding: 8px 12px; font-weight: 800; font-size: 16px; color: var(--spx-navy); }
 .spx-turn-lbl { color: #8a6a1f; }
+
+@media (max-width: 760px) {
+  .hunt.hunt-left { width: calc(100vw - 28px); max-height: 42vh; }
+  .oh-task { display: none !important; }
+}

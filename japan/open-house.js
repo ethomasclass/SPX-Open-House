@@ -135,15 +135,19 @@
   });
 
   // ---- unlock scavenger hunt questions from what the tour shows ----
-  const unlockFor = (text) => {
-    if (/Winter arrives|60° roof/i.test(text)) hunt.unlock('roof');
-    if (/Neighbors build the roof/i.test(text)) hunt.unlock('yui');
-    if (/^Silkworms$/i.test(text.trim())) hunt.unlock('silk');
+  // Questions unlocked from an info pop-up wait until it closes, so the hunt card never covers it.
+  const pending = new Set();
+  const unlockFor = (text, fromInfo) => {
+    const ids = [];
+    if (/Winter arrives|60° roof/i.test(text)) ids.push('roof');
+    if (/Neighbors build the roof/i.test(text)) ids.push('yui');
+    if (/^Silkworms$/i.test(text.trim())) ids.push('silk');
+    ids.forEach((id) => (fromInfo ? pending.add(id) : hunt.unlock(id)));
   };
   const watch = (sel) => {
     const node = $(sel);
     if (!node) return;
-    new MutationObserver(() => unlockFor(node.textContent || '')).observe(node, { childList: true, characterData: true, subtree: true });
+    new MutationObserver(() => unlockFor(node.textContent || '', sel === '#info-title')).observe(node, { childList: true, characterData: true, subtree: true });
   };
   watch('#progress-label');
   watch('#info-title');
@@ -167,7 +171,8 @@
   const shown = (sel) => { const n = $(sel); return n && !n.hidden && !n.closest('[hidden]'); };
   const solved = (id) => hunt.el.querySelector(`.hunt-item[data-id="${id}"]`)?.classList.contains('done');
   const locked = (id) => hunt.el.querySelector(`.hunt-item[data-id="${id}"]`)?.classList.contains('locked');
-  let lastChip = null;
+  let lastChip = null, foldedForInfo = false;
+  const infoOnRight = () => { const r = $('#info').getBoundingClientRect(); return r.left > window.innerWidth / 2; };
   setInterval(() => {
     if (!start.hidden) { setTask(''); SPX.guide($('#oh-start'), 'Click to start', 'bottom'); return; }
     if (!end.hidden) { setTask(''); SPX.guide($('#oh-home'), 'All done!', 'right'); return; }
@@ -177,7 +182,14 @@
       SPX.guide($('#caption'), 'Read this', 'top');
       return;
     }
-    if (shown('#info')) { setTask(''); SPX.guide($('#info'), 'Read this', 'left'); return; }
+    if (shown('#info')) {
+      if (!hunt.el.classList.contains('collapsed')) { hunt.collapse(true); foldedForInfo = true; }
+      setTask('Read the box. Then click the <b>×</b> to close it.');
+      SPX.guide($('#info'), 'Read this', infoOnRight() ? 'left' : 'top');
+      return;
+    }
+    if (pending.size) { pending.forEach((id) => hunt.unlock(id)); pending.clear(); foldedForInfo = false; }
+    else if (foldedForInfo) { foldedForInfo = false; hunt.collapse(false); }
     if (locked('silk')) {
       const chip = [...document.querySelectorAll('#chips button')].find((b) => /Silkworm floor/.test(b.textContent));
       if (chip && chip.getAttribute('aria-current') !== 'true') {
