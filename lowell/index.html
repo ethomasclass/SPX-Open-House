@@ -22,20 +22,20 @@
   .steps i.on { background: var(--spx-gold); }
   .story-body { flex: 1; overflow-y: auto; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 12px; font-size: 17px; line-height: 1.45; }
   .story-body p { margin: 0; }
+  .story-body .spx-read p + p { margin-top: 8px; }
   .story-foot { flex-shrink: 0; padding: 12px 16px; border-top: 1px solid #e3dac6; display: flex; gap: 10px; align-items: center; justify-content: flex-end; background: var(--spx-cream); }
   .story-foot .note { margin-right: auto; font-size: 13px; font-weight: 600; color: var(--spx-muted); }
 
   .worker { display: flex; gap: 10px; align-items: center; padding: 8px 10px; border: 2px dashed var(--spx-navy-3); border-radius: 8px; background: var(--spx-cream); }
-  .worker .av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font: 900 16px var(--spx-display); border: 2px solid var(--spx-navy); flex-shrink: 0; }
+  .worker .av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font: 900 15px var(--spx-display); border: 2px solid var(--spx-navy); flex-shrink: 0; }
   .worker b { display: block; font-size: 15px; }
   .worker span { font-size: 13px; font-weight: 600; color: var(--spx-muted); }
-  .meters { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 8px; align-items: center; font-size: 13px; font-weight: 700; }
-  .meters .bar { height: 9px; background: #e6dece; border-radius: 5px; overflow: hidden; }
+  .meters { display: grid; grid-template-columns: auto 1fr auto auto 1fr auto; gap: 5px 7px; align-items: center; font-size: 12.5px; font-weight: 700; }
+  .meters .bar { height: 8px; min-width: 30px; background: #e6dece; border-radius: 5px; overflow: hidden; }
   .meters .bar span { display: block; height: 100%; border-radius: 5px; transition: width .8s ease; }
-  .meters .v { font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
-  .meters .chg { font-size: 12px; }
+  .meters .v { font-variant-numeric: tabular-nums; min-width: 28px; text-align: right; }
 
-  .picks { display: flex; flex-direction: column; gap: 8px; }
+  .picks { display: flex; flex-direction: column; gap: 8px; border-radius: 10px; }
   .pick {
     text-align: left; display: flex; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 8px;
     border: 2px solid var(--spx-navy); background: #fff; font: 600 16px/1.35 var(--spx-body); color: var(--spx-ink); cursor: pointer;
@@ -44,7 +44,7 @@
   .pick .k { flex-shrink: 0; width: 28px; height: 28px; border-radius: 6px; display: grid; place-items: center; background: var(--spx-navy); color: var(--spx-cream); font: 800 13px var(--spx-display); }
   .pick small { display: block; font-size: 13px; color: var(--spx-muted); font-weight: 600; }
 
-  .bells { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .bells { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; border-radius: 10px; }
   .bell { padding: 8px 4px; border-radius: 8px; border: 2px solid var(--spx-navy); background: #fff; cursor: pointer; font: inherit; color: var(--spx-ink); display: flex; flex-direction: column; align-items: center; gap: 1px; }
   .bell b { font: 800 15px var(--spx-display); }
   .bell span { font-size: 13px; font-weight: 700; color: var(--spx-muted); }
@@ -59,11 +59,12 @@
   .box .lbl { font: 800 11px var(--spx-display); letter-spacing: .07em; color: var(--spx-muted); margin-bottom: 3px; }
   .box.dark .lbl { color: var(--spx-gold-2); }
   .quote { display: flex; gap: 12px; align-items: flex-start; }
-  .quote img { width: 76px; height: 76px; object-fit: cover; border-radius: 8px; border: 2px solid var(--spx-navy); flex-shrink: 0; }
-  .quote q { font-weight: 700; font-size: 17px; }
+  .quote img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 2px solid var(--spx-navy); flex-shrink: 0; }
+  .quote q { font-weight: 700; font-size: 16px; }
+  .quote .plain { margin-top: 6px; font-size: 15px; }
   .quote cite { display: block; font-style: normal; font-size: 13px; color: var(--spx-muted); margin-top: 4px; }
 
-  .hz-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .hz-row { display: flex; flex-wrap: wrap; gap: 6px; border-radius: 10px; padding: 2px; }
   .hzb { border: 2px solid var(--spx-bad); background: #fff; color: var(--spx-bad); border-radius: 999px; padding: 5px 12px; font: 800 14px var(--spx-body); cursor: pointer; }
   .hzb.seen { background: #fbeeea; }
   .hzb.on { background: var(--spx-bad); color: #fff; }
@@ -71,9 +72,9 @@
 
   .outcome .chosen { font-weight: 800; }
   .diary { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 17px; background: #fbf6e7; border: 1px solid #e3d6b4; border-radius: 6px; padding: 10px 12px; }
-  .diary::before { content: 'Diary · '; font-style: normal; font-weight: 700; font-family: var(--spx-body); font-size: 13px; color: var(--spx-muted); }
+  .diary::before { content: 'Her diary · '; font-style: normal; font-weight: 700; font-family: var(--spx-body); font-size: 13px; color: var(--spx-muted); }
   .deltas { display: flex; flex-wrap: wrap; gap: 6px; }
-  .deltas span { font-size: 13px; font-weight: 800; padding: 2px 9px; border-radius: 999px; background: #eee; }
+  .deltas span { font-size: 13px; font-weight: 800; padding: 2px 9px; border-radius: 999px; }
   .deltas .up { background: #e2f1e7; color: var(--spx-good); }
   .deltas .dn { background: #fbe6e0; color: var(--spx-bad); }
 
@@ -82,7 +83,6 @@
   .growbar span { display: block; height: 100%; background: var(--spx-gold); width: 0; }
   ul.end { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
 
-  /* hazard pins inside the scene get the same red as our buttons */
   @media (max-width: 860px) { .story { width: calc(100vw - 28px); bottom: auto; max-height: 55vh; } }
 </style>
 </head>
@@ -109,53 +109,53 @@
   const hunt = SPX.hunt({
     title: 'Scavenger Hunt',
     items: [
-      { id: 'bell', locked: true, q: 'What time did the first bell wake the mill workers?', hint: 'Ring the boarding house bells to find out.',
+      { id: 'bell', locked: true, q: 'What time did the first bell wake up the mill workers?', hint: 'Click the bells at the boarding house.',
         choices: ['4:30 in the morning', '7:00 in the morning', '9:00 in the morning'], answer: 0,
-        why: 'The first bell rang at 4:30 AM. Work started at 5:00, and workers were at the mill about 13 hours a day.' },
-      { id: 'belt', locked: true, q: 'Which part of the loom could catch a sleeve or long hair and pull a worker in?', hint: 'Look at one loom up close and find its dangers.',
-        choices: ['The shuttle', 'The open drive belt', 'The cloth roller'], answer: 1,
-        why: 'Nothing covered the leather drive belt, and there were no safety laws yet.' },
-      { id: 'ten', locked: true, q: 'What did Sarah Bagley and other workers petition lawmakers for?', hint: 'Go to the Mill Yard Gate.',
-        choices: ['The right to vote', 'Free rooms in the boarding house', 'A ten-hour workday'], answer: 2,
-        why: 'Lawmakers said no in 1845. Massachusetts finally passed a ten-hour law for women in 1874.' },
+        why: 'The first bell rang at 4:30 in the morning! Work started at 5:00.' },
+      { id: 'belt', locked: true, q: 'Which part of the loom could grab long hair and pull a worker in?', hint: 'Look at a loom up close and find the dangers.',
+        choices: ['The shuttle', 'The open belt', 'The cloth roller'], answer: 1,
+        why: 'The leather belt had no cover. There were no safety laws yet.' },
+      { id: 'ten', locked: true, q: 'What did Sarah Bagley’s group want?', hint: 'Go to the mill gate.',
+        choices: ['The right to vote', 'Free rooms in the boarding house', 'A 10-hour workday'], answer: 2,
+        why: 'Lawmakers said no in 1845. Workers kept trying, and a law finally passed in 1874.' },
     ],
   });
 
-  // ---------- data (adapted from the full classroom game) ----------
-  const MET = [['sav', 'Savings', '#c9a24a'], ['hea', 'Health', '#c2715a'], ['ind', 'Independence', '#4f7fb3'], ['rep', 'Company record', '#5f8f96'], ['fam', 'Family back home', '#5f9a6e']];
+  // ---------- data (adapted from the full classroom game, written for middle school readers) ----------
+  const MET = [['sav', 'Savings', '#c9a24a'], ['hea', 'Health', '#c2715a'], ['ind', 'Freedom', '#4f7fb3'], ['rep', 'Boss’s opinion', '#5f8f96'], ['fam', 'Family', '#5f9a6e']];
   const WORKERS = [
-    { name: 'Abigail', color: '#c2715a', age: 15, from: 'A rocky hill farm in New Hampshire', goal: 'Help pay off the family farm', d: { fam: 15, hea: 5 } },
+    { name: 'Abigail', color: '#c2715a', age: 15, from: 'A rocky farm in New Hampshire', goal: 'Help her family pay what they owe on the farm', d: { fam: 15, hea: 5 } },
     { name: 'Sarah', color: '#6b8fb3', age: 17, from: 'A dairy farm in Vermont', goal: 'Save money for school', d: { sav: 10, fam: 5 } },
-    { name: 'Mary', color: '#8f7fae', age: 19, from: 'A fishing village in Maine', goal: 'Live on her own for once', d: { ind: 15, hea: -5 } },
+    { name: 'Mary', color: '#8f7fae', age: 19, from: 'A fishing town in Maine', goal: 'Live on her own for the first time', d: { ind: 15, hea: -5 } },
   ];
   const BELLS = [
-    ['4:30', 'AM · Wake', 4.5, 'The morning bell rings across Lowell. Workers get up in the company boarding house.'],
-    ['5:00', 'AM · Work', 5.1, 'The mill gates close and the machines start. Overseers write down who is late.'],
-    ['7:00', 'AM · Breakfast', 7.1, 'Workers rush back to the boarding house. They have about 35 minutes before the bell calls them back.'],
-    ['12:30', 'PM · Dinner', 12.6, 'The main meal of the day. Again, about 35 minutes.'],
-    ['7:00', 'PM · Done', 19.1, 'The machines stop. Workers have been at the mill about 13 hours. They do this six days a week.'],
-    ['10:00', 'PM · Locked', 22.1, 'The boarding house keeper locks the doors. Anyone out late could be reported to the company.'],
+    ['4:30', 'AM · Wake up', 4.5, 'The first bell rings. Workers get out of bed. It is still dark outside.'],
+    ['5:00', 'AM · Work', 5.1, 'The factory gates close and the machines start. The boss writes down anyone who is late.'],
+    ['7:00', 'AM · Breakfast', 7.1, 'Workers rush back to the boarding house to eat. They get about 35 minutes. Then the bell calls them back to work.'],
+    ['12:30', 'PM · Lunch', 12.6, 'Lunch is the biggest meal of the day. Workers get about 35 minutes again.'],
+    ['7:00', 'PM · Done', 19.1, 'The machines finally stop. Workers have been at the factory for about 13 hours. They do this 6 days a week.'],
+    ['10:00', 'PM · Locked', 22.1, 'The boarding house doors are locked for the night. Anyone who comes back late can get in trouble with the company.'],
   ];
   const HAZ = [
-    ['Shuttle', 'The flying shuttle', 'A wooden shuttle with metal tips shot back and forth across the loom many times a minute. If it jumped its track, it could fly out and hit a weaver in the face or eye.'],
-    ['Belt', 'The open drive belt', 'A leather belt carried power down from the spinning shaft in the ceiling. Nothing covered it. A sleeve, an apron string or long hair caught in the belt could pull a worker into the machine.'],
-    ['Gears', 'The open gears', 'Iron gears turned on the side of the loom with no cover. Weavers were paid by the piece, so they often fixed problems while the loom kept running. One slip could crush a finger.'],
-    ['Beater', 'The beater', 'After every pass of the shuttle, the beater slammed forward to pack the thread tight. A hand reaching in to fix a broken thread could be struck.'],
-    ['Air', 'The air', 'Rooms were kept hot and damp, often with the windows shut. Workers breathed cotton dust all day, which hurt their lungs. The nonstop noise damaged their hearing.'],
+    ['Shuttle', 'The shuttle', 'The shuttle is a wooden piece with metal tips. It shoots back and forth very fast to weave the thread. If it flew off its track, it could hit a worker in the face or eye.'],
+    ['Belt', 'The open belt', 'A leather belt carried power down from a spinning pole in the ceiling. Nothing covered it. A sleeve, an apron string, or long hair could get caught and pull a worker into the machine.'],
+    ['Gears', 'The open gears', 'Metal gears turned on the side of the loom with no cover. Workers were paid for how much cloth they made, so they often fixed things without stopping the machine. One slip could crush a finger.'],
+    ['Beater', 'The beater', 'After each pass of the shuttle, this bar slams forward to pack the threads tight. A hand reaching in to fix a broken thread could get hit.'],
+    ['Air', 'The air', 'The rooms were kept hot and wet so the thread would not break, and windows were often shut. Workers breathed cotton dust all day, which hurt their lungs. The loud noise hurt their hearing.'],
   ];
   const CHOICES = {
-    payday: { title: 'Your first payday', scen: '{n}, after your first week at the looms you get paid. After paying for your room and meals, you have $2.25 left. What will you do with your wages?', opts: [
-      { t: 'Send most of it home to your family', d: { fam: 15, sav: -15, ind: -5 }, out: 'Your family uses the money to pay part of the farm debt. You have little left over, but they are proud of you. Many mill workers sent money home.', diary: 'Sent $2 home today. Mother will be glad. I kept a few pennies for thread.' },
-      { t: 'Save it at the Lowell bank', d: { sav: 20, ind: 5 }, out: 'Your savings start to grow. Many mill women opened accounts at the Lowell Institution for Savings. For many, it was the first money they had ever controlled.', diary: 'Opened my own bank account today. My own name in the book!' },
-      { t: 'Spend some on books, a lecture ticket and a new bonnet', d: { ind: 10, sav: -10, fam: -5 }, out: 'You enjoy city life. Your family wonders why you send so little home. Some critics complained that mill girls spent too much on fancy things.', diary: 'Bought a new bonnet and a ticket to a lecture. Lowell is nothing like the farm.' }] },
-    loom: { title: 'A third loom', scen: 'It is the 1840s. Cloth prices have fallen, so the company runs the machines faster and cuts the pay for each piece of cloth. Your overseer offers you a third loom. He gets a bonus when his room makes more cloth.', opts: [
-      { t: 'Take the third loom', d: { sav: 25, hea: -15, rep: 10 }, looms: 3, out: 'You earn more, but you are on your feet running between machines all day. By night your back aches, and you cough from the lint. Your overseer gets his bonus.', diary: 'Three looms now. I can hardly keep up. I cough every night.' },
-      { t: 'Say no', d: { sav: -5, rep: -15 }, looms: 2, out: 'The overseer gives the loom to someone else and marks you as “difficult.” Your pay stays the same while prices keep rising.', diary: 'Said no to the third loom. The overseer has not spoken to me since.' },
-      { t: 'Ask for higher pay first', d: { sav: 20, hea: -15, rep: -10, ind: 5 }, looms: 3, out: 'He laughs. “There are girls lined up at the gate who would take it.” You end up taking the third loom anyway, at the lower rate.', diary: 'Asked for more pay. He laughed. I took the loom anyway.' }] },
-    petition: { title: 'The ten-hour petition', scen: 'Sarah Bagley’s group asks you to sign a petition for a ten-hour workday. They also need workers to speak to lawmakers at the State House in Boston. The company is watching who joins.', opts: [
-      { t: 'Speak to lawmakers at the State House', d: { ind: 20, rep: -25 }, out: 'You tell lawmakers about your 13-hour days. They thank you, but they refuse to limit hours. Back in Lowell, your overseer watches you closely.', outF: 'You tell lawmakers about your 13-hour days. They refuse to act. When you get back, the company fires you and puts your name on a blacklist. No mill in Lowell will hire you now.', diary: 'Spoke at the State House today. My knees shook, but I said it all.', diaryF: 'I have been dismissed. My paper says I am not to be hired again.' },
-      { t: 'Sign the petition but stay quiet', d: { ind: 10, rep: -5 }, out: 'Your name joins thousands of others. The lawmakers still say no, but workers keep pushing.', diary: 'Signed my name today with many others. We will keep at it.' },
-      { t: 'Don’t sign', d: { rep: 10, ind: -10 }, out: 'You keep your job, and your record stays clean. Many workers stayed out of it for the same reason: they could not risk losing their pay.', diary: 'I did not sign. I cannot lose this job. But I felt ashamed when the others went.' }] },
+    payday: { title: 'Your first payday', scen: '{n}, you worked all week, and now you get paid! After you pay for your room and food, you have $2.25 left. What will you do with your money?', opts: [
+      { t: 'Send most of it home to my family', d: { fam: 15, sav: -15, ind: -5 }, out: 'Your family uses the money to help pay what they owe on the farm. You have little left, but they are proud of you. Many mill workers sent money home.', diary: 'Sent $2 home today. Mother will be glad. I kept a few pennies for thread.' },
+      { t: 'Save it in the bank', d: { sav: 20, ind: 5 }, out: 'Your savings start to grow. For many mill workers, this was the first money they ever had of their own.', diary: 'Opened my own bank account today. My own name in the book!' },
+      { t: 'Buy new clothes, books, and a ticket to a talk in town', d: { ind: 10, sav: -10, fam: -5 }, out: 'You enjoy city life! But your family wonders why you send so little money home.', diary: 'Bought new clothes and a ticket to a talk in town. Lowell is nothing like the farm.' }] },
+    loom: { title: 'A third loom', scen: 'Years go by. Now the company wants more cloth for less money. It speeds up the machines and pays less for each piece of cloth. Your boss asks you to run a third loom. He gets a bonus if his workers make more cloth.', opts: [
+      { t: 'Take the third loom', d: { sav: 25, hea: -15, rep: 10 }, looms: 3, out: 'You earn more money. But you run between machines all day. By night your back hurts, and you cough from the cotton dust. Your boss gets his bonus.', diary: 'Three looms now. I can hardly keep up. I cough every night.' },
+      { t: 'Say no', d: { sav: -5, rep: -15 }, looms: 2, out: 'The boss gives the loom to someone else. He calls you a troublemaker. Your pay stays the same, even though prices keep going up.', diary: 'Said no to the third loom. The boss has not spoken to me since.' },
+      { t: 'Ask for more pay first', d: { sav: 20, hea: -15, rep: -10, ind: 5 }, looms: 3, out: 'He laughs. “There are girls lined up at the gate who would take this job.” You take the third loom anyway, for the same low pay.', diary: 'Asked for more pay. He laughed. I took the loom anyway.' }] },
+    petition: { title: 'Fight for a shorter workday', scen: 'Sarah Bagley’s group wants a law that says no one has to work more than 10 hours a day. They ask you to sign a petition. A petition is a letter to lawmakers signed by many people. They also need workers to speak to lawmakers in Boston. The company is watching who joins.', opts: [
+      { t: 'Speak to the lawmakers in Boston', d: { ind: 20, rep: -25 }, out: 'You tell the lawmakers about your 13-hour workdays. They thank you, but they say no. Back at the mill, your boss keeps a close eye on you.', outF: 'You tell the lawmakers about your 13-hour workdays. They say no. When you get back, the company fires you. They put your name on a blacklist, a list of workers that no mill will hire.', diary: 'Spoke to the lawmakers today. My knees shook, but I said it all.', diaryF: 'I have been fired. No mill in Lowell will hire me now.' },
+      { t: 'Sign the petition, but stay quiet', d: { ind: 10, rep: -5 }, out: 'Your name joins thousands of others. The lawmakers still say no, but the workers keep trying.', diary: 'Signed my name today with many others. We will keep at it.' },
+      { t: 'Don’t sign', d: { rep: 10, ind: -10 }, out: 'You keep your job and stay out of trouble. Many workers did the same. They could not risk losing their pay.', diary: 'I did not sign. I cannot lose this job. But I felt bad when the others went.' }] },
   };
 
   // ---------- state ----------
@@ -163,6 +163,8 @@
   const STEP_COUNT = 7;
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const read = (html) => `<div class="spx-read"><span class="spx-read-lbl">📖 READ</span>${html}</div>`;
+  const turn = (text) => `<div class="spx-turn"><span class="spx-turn-lbl">👉 YOUR TURN</span>${text}</div>`;
 
   // ---------- scene control ----------
   const sceneState = { done: [0, 0, 0, 0, 0, 0, 0], current: 7, focus: null, cut: false, time: 10, sunday: false, gate: true, looms: 2, bale: null, intro: true, growth: 0, growSnap: true, panelX: 0, panelY: 0, loomClose: false, hz: null };
@@ -238,6 +240,8 @@
   }
 
   // ---------- rendering ----------
+  let guideTarget = null, guideLabel = '';
+  const guide = (target, label) => { guideTarget = target; guideLabel = label; };
   function frame(kicker, heading, body, foot) {
     $('kicker').textContent = kicker;
     $('heading').textContent = heading;
@@ -247,25 +251,28 @@
     $('body').scrollTop = 0;
   }
   const nextBtn = (label, enabled = true, note = '') => `${note ? `<span class="note">${note}</span>` : ''}<button class="btn-spx gold" type="button" data-act="next" ${enabled ? '' : 'disabled style="opacity:.45;cursor:not-allowed"'}>${label}</button>`;
+  const footBtn = () => $('foot').querySelector('button:not([disabled])');
 
-  function choiceStep(key, kicker, sceneNote) {
+  function choiceStep(key, kicker) {
     const C = CHOICES[key];
     if (ST.outcome) {
       const o = ST.outcome;
       const deltas = o.deltas.map(([label, v, k]) => `<span class="${v > 0 ? 'up' : 'dn'}">${label} ${v > 0 ? '+' : ''}${k === 'sav' ? '$' : ''}${v}</span>`).join('');
       frame(kicker, C.title, `${workerHTML()}
         <div class="outcome box"><div class="lbl">${esc(ST.wk.name.toUpperCase())} CHOSE</div><div class="chosen">${esc(o.opt.t)}</div></div>
-        <p>${esc(o.fired ? o.opt.outF : o.opt.out)}</p>
+        ${read(`<p>${esc(o.fired ? o.opt.outF : o.opt.out)}</p>`)}
         <div class="deltas">${deltas}</div>
         <div class="diary">${esc(o.fired ? o.opt.diaryF : o.opt.diary)}</div>`,
-        nextBtn('Continue →'));
+        nextBtn('Next →'));
+      guide(footBtn(), 'Click Next');
       return;
     }
     frame(kicker, C.title, `${workerHTML()}
-      ${sceneNote ? `<div class="box">${sceneNote}</div>` : ''}
-      <p>${esc(C.scen.replace('{n}', ST.wk.name))}</p>
-      <div class="picks">${C.opts.map((o, i) => `<button class="pick" type="button" data-act="choose" data-i="${i}"><span class="k">${'ABC'[i]}</span><span>${esc(o.t)}</span></button>`).join('')}</div>`,
-      '<span class="note">Your choice changes her story. Press A, B or C.</span>');
+      ${read(`<p>${esc(C.scen.replace('{n}', ST.wk.name))}</p>`)}
+      ${turn('Make a choice. It will change her life!')}
+      <div class="picks" id="picks">${C.opts.map((o, i) => `<button class="pick" type="button" data-act="choose" data-i="${i}"><span class="k">${'ABC'[i]}</span><span>${esc(o.t)}</span></button>`).join('')}</div>`,
+      '<span class="note">Tip: you can also press A, B or C.</span>');
+    guide($('picks'), 'Pick one');
   }
 
   function choose(i) {
@@ -281,30 +288,36 @@
 
   function render() {
     const s = ST.step;
+    guide(null);
     if (s === 0) {
       scene({ focus: null, cut: false, time: 10, loomClose: false, intro: true });
-      const body = `<p>In 1821, this bend in the Merrimack River was quiet farmland. Rich Boston businessmen bought it, dug canals and used the falling water to power giant cotton mills.</p>
+      const body = `${read(`<p>In 1821, this spot next to a river in Massachusetts was just farmland. Then rich businessmen built giant factories here, called <b>mills</b>. The falling river water turned big wheels that ran the machines. The mills turned cotton into cloth.</p>`)}
         <div class="box"><div class="year" id="growYear">1821</div><div class="growbar" style="margin-top:8px"><span id="growBar"></span></div></div>
-        <p>${ST.grown ? 'By 1840, more than 20,000 people lived here, and about 8,000 of them worked in the mills. Most were young women from New England farms.' : 'Watch it change into one of America’s first factory cities.'}</p>
-        <div class="box dark"><div class="lbl">YOUR MISSION</div>Live a few years as a mill worker. Make choices, see what they cost her, and finish the scavenger hunt in the corner.</div>`;
+        ${ST.grown ? read('<p>By 1840, more than 20,000 people lived in the new city of Lowell. About 8,000 of them worked in the mills. Most of the workers were young women from farms.</p>') : ''}
+        <div class="box dark"><div class="lbl">YOUR MISSION</div>Pretend you are a young mill worker. Make choices and see how they change her life. Answer the scavenger hunt questions in the corner as you go.</div>`;
       frame('U.S. HISTORY · ABOUT 5 MINUTES', 'A Day in the Lowell Mills', body,
-        ST.grown ? nextBtn('Meet your mill worker →') : ST.growing ? '<span class="note">Building Lowell…</span>' : `<button class="btn-spx ghost" type="button" data-act="skipgrow">Skip</button><button class="btn-spx gold" type="button" data-act="grow">Watch Lowell grow →</button>`);
-      if (ST.grown) { const y = $('growYear'), b = $('growBar'); y.textContent = '1840'; b.style.width = '100%'; }
+        ST.grown ? nextBtn('Meet your mill worker →') : ST.growing ? '<span class="note">Watch the city grow…</span>' : `<button class="btn-spx ghost" type="button" data-act="skipgrow">Skip</button><button class="btn-spx gold" type="button" data-act="grow">Watch Lowell grow →</button>`);
+      if (ST.grown) { $('growYear').textContent = '1840'; $('growBar').style.width = '100%'; }
+      if (!ST.growing) guide($('foot').querySelector('.gold'), ST.grown ? 'Click to keep going' : 'Start here');
     } else if (s === 1) {
       scene({ focus: 2, time: 10, intro: true });
-      frame('STEP 1 · CHOOSE', 'Who are you?', `<p>It’s 1836. You are a young woman leaving home to work in the Lowell mills. Pick your worker.</p>
-        <div class="picks">${WORKERS.map((w, i) => `<button class="pick" type="button" data-act="worker" data-i="${i}"><span class="k" style="background:${w.color};color:var(--spx-navy)">${w.name[0]}</span><span><b>${w.name}, age ${w.age}</b><small>${w.from} · Goal: ${w.goal}</small></span></button>`).join('')}</div>
-        <p style="font-size:14px;color:var(--spx-muted);font-weight:600">Your worker is made up, but every choice is based on things that really happened to mill workers.</p>`);
+      frame('STEP 1 · PICK YOUR WORKER', 'Who are you?', `${read('<p>It’s 1836. You are a girl leaving your family’s farm to work in the Lowell mills.</p>')}
+        ${turn('Pick who you want to be.')}
+        <div class="picks" id="picks">${WORKERS.map((w, i) => `<button class="pick" type="button" data-act="worker" data-i="${i}"><span class="k" style="background:${w.color};color:var(--spx-navy)">${w.name[0]}</span><span><b>${w.name}, age ${w.age}</b><small>${w.from} · Goal: ${w.goal}</small></span></button>`).join('')}</div>
+        <p style="font-size:14px;color:var(--spx-muted);font-weight:600">These workers are made up, but what happens to them is based on real history.</p>`);
+      guide($('picks'), 'Pick one');
     } else if (s === 2) {
-      // bells first, then payday
       if (!ST.payday) {
-        const b = ST.bell != null ? BELLS[ST.bell] : null;
+        const b = ST.bell != null ? BELLS[ST.bell] : null, need = Math.max(0, 3 - ST.bellsSeen.size);
         scene({ focus: 2, time: b ? b[2] : 4.5, intro: true });
         frame('STEP 2 · THE BOARDING HOUSE', 'Life by the bell', `${workerHTML()}
-          <p>Mill workers lived in company boarding houses. Bells told them when to wake, work, eat and sleep. <b>Ring the bells</b> and watch the day go by.</p>
-          <div class="bells">${BELLS.map((x, i) => `<button class="bell ${ST.bell === i ? 'on' : ST.bellsSeen.has(i) ? 'seen' : ''}" type="button" data-act="bell" data-i="${i}"><b>${x[0]}</b><span>${x[1]}</span></button>`).join('')}</div>
-          ${b ? `<div class="box"><div class="lbl">${b[0]} ${b[1].toUpperCase()}</div>${b[3]}</div>` : ''}`,
-          nextBtn('Payday →', ST.bellsSeen.size >= 3, ST.bellsSeen.size >= 3 ? '' : `Ring ${3 - ST.bellsSeen.size} more bell${3 - ST.bellsSeen.size === 1 ? '' : 's'}`));
+          ${read('<p>Mill workers lived together in big company houses called <b>boarding houses</b>. Bells told them when to wake up, work, eat, and sleep.</p>')}
+          ${turn(need ? `Click the bells to see a worker’s day. Ring ${need} more.` : 'Nice! Ring more bells, or click Next.')}
+          <div class="bells" id="bells">${BELLS.map((x, i) => `<button class="bell ${ST.bell === i ? 'on' : ST.bellsSeen.has(i) ? 'seen' : ''}" type="button" data-act="bell" data-i="${i}"><b>${x[0]}</b><span>${x[1]}</span></button>`).join('')}</div>
+          ${b ? `<div class="box" id="readNow"><div class="lbl">📖 ${b[0]} ${b[1].toUpperCase()}</div>${b[3]}</div>` : ''}`,
+          nextBtn('Next: Payday →', !need));
+        if (need) guide($('bells'), ST.bellsSeen.size ? 'Ring another bell' : 'Click a bell');
+        else guide(footBtn(), 'Click Next');
       } else {
         scene({ focus: 2, time: 19.1, intro: true });
         choiceStep('payday', 'STEP 2 · CHOICE 1 OF 3');
@@ -313,52 +326,61 @@
       scene({ focus: 3, cut: true, time: 10, loomClose: ST.loomClose, hz: ST.hz, intro: true });
       if (!ST.loomClose) {
         frame('STEP 3 · INSIDE THE MILL', 'The weaving room', `${workerHTML()}
-          <p>The mill wall is cut away so you can see inside. One water wheel turns shafts and belts that run every machine in the building.</p>
-          <div class="box quote"><img src="./larcom.jpg" alt="Portrait of Lucy Larcom"><div><q>…the buzzing and hissing and whizzing of pulleys and rollers and spindles and flyers around me often grew tiresome.</q><cite>Lucy Larcom, mill worker from age 11</cite></div></div>
-          <p>Your worker is the weaver in teal. Let’s look at her loom up close.</p>`,
-          nextBtn('Look at one loom up close →'));
-        $('foot').querySelector('[data-act=next]').dataset.act = 'close';
+          ${read('<p>We took away part of the wall so you can see inside. Workers here run <b>looms</b>, machines that weave thread into cloth. One giant water wheel powers every machine in the building.</p>')}
+          <div class="box quote"><img src="./larcom.jpg" alt="Portrait of Lucy Larcom"><div><q>…the buzzing and hissing and whizzing of pulleys and rollers… around me often grew tiresome.</q><div class="plain"><b>In other words:</b> the machines were so loud and busy that they wore her out.</div><cite>Lucy Larcom, who started working in the mills at age 11</cite></div></div>
+          ${turn('Your worker is the girl in blue-green. Let’s look at her loom up close.')}`,
+          `<button class="btn-spx gold" type="button" data-act="close">See the loom up close →</button>`);
+        guide(footBtn(), 'Click here');
       } else {
         const h = ST.hz != null ? HAZ[ST.hz] : null, need = Math.max(0, 2 - ST.hzSeen.size);
         frame('STEP 3 · INSIDE THE MILL', 'One loom, up close', `${workerHTML()}
-          <p>Looms like this had <b>no safety guards</b>. Click the red numbers on the loom (or the buttons below) to find the dangers.</p>
-          <div class="hz-row">${HAZ.map((x, i) => `<button class="hzb ${ST.hz === i ? 'on' : ST.hzSeen.has(i) ? 'seen' : ''}" type="button" data-act="hz" data-i="${i}">${i + 1} · ${x[0]}</button>`).join('')}</div>
-          ${h ? `<div class="box warn"><div class="lbl">DANGER ${ST.hz + 1}: ${h[1].toUpperCase()}</div>${h[2]}</div>` : ''}
-          <div class="box dark"><div class="lbl">IF A WORKER GOT HURT</div>There were no safety laws and no pay for injured workers. She usually lost her wages, and often her job.</div>
-          <button class="btn-spx ghost" type="button" data-act="sound" style="align-self:flex-start">${ST.sound ? '🔊 Mill noise: on' : '🔇 Mill noise: off'}</button>`,
-          nextBtn('Continue →', need === 0, need ? `Find ${need} more danger${need === 1 ? '' : 's'}` : ''));
+          ${read('<p>Looms had no safety covers. There were no safety laws yet.</p>')}
+          ${turn(need ? `Find the dangers! Click the red numbers on the loom, or the buttons below. Find ${need} more.` : 'Good job! Find more dangers, or click Next.')}
+          <div class="hz-row" id="hz">${HAZ.map((x, i) => `<button class="hzb ${ST.hz === i ? 'on' : ST.hzSeen.has(i) ? 'seen' : ''}" type="button" data-act="hz" data-i="${i}">${i + 1} · ${x[0]}</button>`).join('')}</div>
+          ${h ? `<div class="box warn" id="readNow"><div class="lbl">📖 DANGER ${ST.hz + 1}: ${h[1].toUpperCase()}</div>${h[2]}</div>` : ''}
+          <div class="box dark"><div class="lbl">IF A WORKER GOT HURT</div>She did not get paid while she was hurt. Often she lost her job.</div>
+          <button class="btn-spx ghost" type="button" data-act="sound" style="align-self:flex-start">${ST.sound ? '🔊 Factory noise: on' : '🔇 Factory noise: off'}</button>`,
+          nextBtn('Next →', need === 0));
+        if (need) guide($('hz'), ST.hzSeen.size ? 'Find one more' : 'Click a danger');
+        else guide(footBtn(), 'Click Next');
       }
     } else if (s === 4) {
       scene({ focus: 3, cut: true, time: 10, loomClose: false, hz: null, intro: true });
-      choiceStep('loom', 'STEP 4 · CHOICE 2 OF 3', ST.outcome ? '' : '<div class="lbl">THE 1840s SPEED-UP</div>Weavers went from tending 2 looms to 3 or 4, and machines ran faster, but pay per piece was cut.');
+      choiceStep('loom', 'STEP 4 · CHOICE 2 OF 3');
     } else if (s === 5) {
       scene({ focus: 4, cut: false, time: 12.6, loomClose: false, intro: true });
       if (!ST.gateRead) {
-        frame('STEP 5 · THE MILL YARD GATE', 'Workers push back', `${workerHTML()}
-          <p>By 1845, Lowell workers said they worked 13 to 14 hours a day, six days a week. Some women started organizing.</p>
-          <div class="box quote"><img src="./bagley.jpg" alt="Portrait of Sarah Bagley"><div><q>…when our rights are trampled upon and we appeal in vain to legislators, what shall we do but appeal to the people?</q><cite>Sarah Bagley, weaver and labor leader, 1845</cite></div></div>
-          <p>Bagley led the Lowell Female Labor Reform Association, a group of women workers fighting for a shorter workday.</p>`,
-          nextBtn('Decide →'));
+        frame('STEP 5 · THE MILL GATE', 'Workers fight back', `${workerHTML()}
+          ${read('<p>By 1845, mill workers worked 13 to 14 hours a day, 6 days a week. Some women decided to work together to change that.</p>')}
+          <div class="box quote"><img src="./bagley.jpg" alt="Portrait of Sarah Bagley"><div><q>…when our rights are trampled upon and we appeal in vain to legislators, what shall we do but appeal to the people?</q><div class="plain"><b>In other words:</b> if lawmakers won’t listen to us, we will ask the public for help.</div><cite>Sarah Bagley, mill worker and leader, 1845</cite></div></div>
+          ${read('<p>Bagley led a group of women mill workers. They wanted the workday cut to 10 hours.</p>')}`,
+          nextBtn('Next: Your choice →'));
+        guide(footBtn(), 'Click Next');
       } else {
         choiceStep('petition', 'STEP 5 · CHOICE 3 OF 3');
       }
     } else if (s === 6) {
       scene({ focus: null, cut: false, time: 19.1, loomClose: false, intro: true });
       const n = ST.wk.name, m = ST.m, L = [];
-      L.push(m.sav >= 120 ? `${n} saved $${m.sav}, more money than most women of the time ever controlled.` : m.sav >= 50 ? `${n} saved $${m.sav}. It was not a fortune, but it was her own.` : `${n} saved almost nothing. Most of her wages went to board, family or hard times.`);
-      if (ST.fired) L.push(`After being blacklisted for speaking up, ${n} never worked in a Lowell mill again.`);
-      L.push(m.hea < 60 ? `Years of hot, dusty mill air left ${n} with a cough that never fully went away. Many mill women went home sick.` : m.hea >= 75 ? `${n}’s health held up better than most.` : `The long hours wore ${n} down, but not as badly as some.`);
-      if (m.fam >= 65) L.push(`The money ${n} sent home helped her family keep going.`); else if (m.fam < 45) L.push(`${n} grew distant from her family back home.`);
-      L.push(m.ind >= 50 ? `${n} learned to speak up. Many former mill women became teachers, writers and reformers.` : `${n} kept quiet and kept working, like most workers did.`);
+      L.push(m.sav >= 120 ? `${n} saved $${m.sav}. That was more money than most women of her time ever had.` : m.sav >= 50 ? `${n} saved $${m.sav}. It wasn’t a lot, but it was her own money.` : `${n} saved almost nothing. Her pay went to her room, her family, or hard times.`);
+      if (ST.fired) L.push(`${n} was blacklisted for speaking up. She never worked in a Lowell mill again.`);
+      L.push(m.hea < 60 ? `Years of dusty air left ${n} with a cough that never went away. Many mill workers went home sick.` : m.hea >= 75 ? `${n} stayed fairly healthy.` : `The long days wore ${n} down, but not as much as some workers.`);
+      if (m.fam >= 65) L.push(`The money ${n} sent home helped her family.`); else if (m.fam < 45) L.push(`${n} grew apart from her family back home.`);
+      L.push(m.ind >= 50 ? `${n} learned to speak up. Many mill workers later became teachers, writers, and leaders.` : `${n} kept quiet and kept working, like most workers did.`);
       const huntLeft = hunt.total - hunt.solvedCount();
       frame('THE END OF HER STORY', `What happened to ${n}?`, `${workerHTML()}
-        <ul class="end">${L.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
-        <div class="box"><div class="lbl">WHAT REALLY HAPPENED</div>Lawmakers said no to the ten-hour day in 1845. Workers kept pushing, and Massachusetts finally limited women’s workdays to ten hours in <b>1874</b>.</div>
-        ${huntLeft ? `<div class="box warn"><div class="lbl">ALMOST!</div>You have ${huntLeft} scavenger hunt question${huntLeft === 1 ? '' : 's'} left in the corner.</div>` : ''}
-        <div class="box dark"><div class="lbl">IN CLASS, WE GO FURTHER</div>Students visit all 7 stops in Lowell: the railroad, the Irish workers who dug the canals, and how Northern mills depended on cotton grown by enslaved people in the South. Then they answer the big question: <b>Who benefited from Northern growth, and who paid the price?</b></div>`,
+        ${read(`<ul class="end">${L.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`)}
+        <div class="box"><div class="lbl">WHAT REALLY HAPPENED</div>In 1845, lawmakers said no to the 10-hour workday. Workers kept fighting for years. Finally, in <b>1874</b>, Massachusetts passed a law: women could not be made to work more than 10 hours a day.</div>
+        ${huntLeft ? `<div class="box warn"><div class="lbl">ALMOST DONE!</div>You still have ${huntLeft} scavenger hunt question${huntLeft === 1 ? '' : 's'} to answer in the corner.</div>` : ''}
+        <div class="box dark"><div class="lbl">IN CLASS, WE GO FURTHER</div>Students visit 7 places in Lowell. They learn about the Irish workers who dug the canals by hand, and how the mills used cotton picked by enslaved people in the South. Then they answer a big question: <b>Who gained from the factories, and who paid the price?</b></div>`,
         `<button class="btn-spx ghost" type="button" data-act="again">Play again</button><button class="btn-spx gold" type="button" data-act="home">Back to menu</button>`);
+      if (!huntLeft) guide($('foot').querySelector('.gold'), 'All done!');
     }
-    const first = $('body').querySelector('.pick, .bell, .hzb') || $('foot').querySelector('button:not([disabled])');
+    if (guideTarget) guideTarget.scrollIntoView({ block: 'nearest' });
+    // keep the text they just opened (a bell or a danger) on screen too
+    if ($('readNow')) $('readNow').scrollIntoView({ block: 'nearest' });
+    SPX.guide(guideTarget, guideLabel, 'right');
+    const first = guideTarget && (guideTarget.matches('button') ? guideTarget : guideTarget.querySelector('button'));
     if (first && document.activeElement === document.body) first.focus({ preventScroll: true });
   }
 

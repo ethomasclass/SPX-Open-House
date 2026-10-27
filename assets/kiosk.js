@@ -55,6 +55,44 @@
     return api;
   };
 
+  // Show visitors what to do next: a pulsing gold ring on `target` and a bouncing label beside it.
+  // place: 'right' | 'left' | 'top' | 'bottom'. SPX.guide(null) clears it.
+  const ptr = el('div', 'spx-pointer');
+  ptr.setAttribute('aria-hidden', 'true');
+  let guided = null, guideLabel = '', guidePlace = 'right';
+  SPX.guide = function (target, label = '👉 Click here', place = 'right') {
+    if (guided && guided !== target) guided.classList.remove('spx-glow');
+    guided = target || null; guideLabel = label; guidePlace = place;
+    if (guided) guided.classList.add('spx-glow');
+    if (!ptr.isConnected) document.body.appendChild(ptr);
+    placePointer();
+  };
+  function placePointer() {
+    const t = guided;
+    const r = t && t.isConnected && t.getClientRects().length ? t.getBoundingClientRect() : null;
+    if (!r || r.width === 0 || t.closest('[hidden]')) { ptr.hidden = true; return; }
+    ptr.hidden = false;
+    let place = guidePlace;
+    if (place === 'top' && r.top < 110) place = 'bottom';
+    ptr.className = 'spx-pointer at-' + place;
+    const arrow = { right: '👈', left: '👉', top: '👇', bottom: '👆' }[place];
+    const text = guideLabel.replace(/^[👉👈👇👆]\s*/u, '');
+    const html = place === 'left' ? `<span>${text}</span><b>${arrow}</b>` : `<b>${arrow}</b><span>${text}</span>`;
+    if (ptr.innerHTML !== html) ptr.innerHTML = html;
+    const g = 14;
+    const pos = {
+      right: [r.right + g, r.top + r.height / 2, '0, -50%'],
+      left: [r.left - g, r.top + r.height / 2, '-100%, -50%'],
+      top: [r.left + r.width / 2, r.top - g, '-50%, -100%'],
+      bottom: [r.left + r.width / 2, r.bottom + g, '-50%, 0'],
+    }[place];
+    ptr.style.left = Math.round(pos[0]) + 'px';
+    ptr.style.top = Math.round(pos[1]) + 'px';
+    ptr.style.setProperty('--tr', `translate(${pos[2]})`);
+  }
+  setInterval(placePointer, 120);
+  window.addEventListener('resize', placePointer);
+
   // items: [{ id, q, hint, choices: [..], answer: index, why, locked: bool }]
   SPX.hunt = function ({ title = 'Scavenger Hunt', items, onComplete, collapsed = false, side = 'right' }) {
     const box = el('aside', 'hunt' + (side === 'left' ? ' hunt-left' : '') + (collapsed ? ' collapsed' : ''));
@@ -75,11 +113,12 @@
     function render() {
       body.innerHTML = '';
       state.forEach((it, i) => {
-        const card = el('div', 'hunt-item' + (it.solved ? ' done' : it.open ? '' : ' locked'));
+        const card = el('div', 'hunt-item' + (it.solved ? ' done' : it.open ? ' need' : ' locked'));
         card.dataset.id = it.id;
         const q = el('div', 'hunt-q');
         q.append(el('span', 'hunt-num', it.solved ? '✓' : String(i + 1)), Object.assign(el('span'), { textContent: it.q }));
         card.append(q);
+        if (it.open && !it.solved) card.append(el('div', 'hunt-badge', '👉 Answer this!'));
         if (!it.open) {
           card.append(Object.assign(el('div', 'hunt-hint'), { textContent: it.hint }));
         } else if (it.solved) {
@@ -104,6 +143,7 @@
       });
       const solved = state.filter((s) => s.solved).length;
       count.textContent = `${solved} / ${state.length}`;
+      box.classList.toggle('waiting', state.some((s) => s.open && !s.solved));
       if (solved === state.length) {
         body.append(el('div', 'hunt-done-msg', '🎉 You finished the scavenger hunt!'));
         if (!completeFired) { completeFired = true; onComplete && onComplete(); }

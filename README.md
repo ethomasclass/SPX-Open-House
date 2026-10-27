@@ -27,5 +27,6 @@ A kiosk app for open house Chromebooks. Visitors pick **one** experience (about 
 
 - Everything is static HTML/JS with no build step, and it works offline once loaded. Three.js and the fonts are in `assets/` instead of loading from the internet.
 - `lowell/` is a new short guided version that reuses the 3D scene (`lowell-scene.js`) from the [lowellmill](https://github.com/ethomasclass/lowellmill) classroom game. Its only change is loading Three.js from `assets/vendor/`.
-- `japan/index.html` is a copy of the [housingstylestour](https://github.com/ethomasclass/housingstylestour) tour, unchanged except for 3 lines at the end that load `japan/open-house.js`. That file adds the start screen, hides Levittown and VR, and runs the scavenger hunt.
+- `japan/index.html` is a copy of the [housingstylestour](https://github.com/ethomasclass/housingstylestour) tour. For the open house, its Japan narration, info text and place names are rewritten for 6th–7th grade readers, and 3 lines at the end load `japan/open-house.js`. That file adds the start and wrap-up screens, hides Levittown, VR and "Skip to the tour", and runs the scavenger hunt and "Your turn" hints.
+- All text in both experiences is written for 6th–7th grade readers. A glowing gold ring and a bouncing 👉 label always show what to click next.
 - Shared look and kiosk features are in `assets/brand.css` and `assets/kiosk.js`.
